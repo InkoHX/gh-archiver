@@ -3,7 +3,7 @@ import { config } from 'dotenv'
 
 config()
 
-const args = process.argv.slice(1)
+const args = process.argv.slice(2)
 const dryRun = args.includes('--dry-run')
 const duration = new Date(Date.now() - 1000 * 60 * 60 * 24 * 365)
 const octkit = new Octokit({
