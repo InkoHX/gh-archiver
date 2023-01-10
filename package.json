@@ -1,6 +1,21 @@
 {
   "name": "gh-archiver",
+  "description": "Tools for archiving GitHub repositories.",
   "type": "module",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "./index.js",
+  "keywords": ["github"],
+  "homepage": "https://github.com/InkoHX/gh-archiver#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/InkoHX/gh-archiver.git"
+  },
+  "author": {
+    "name": "InkoHX",
+    "email": "me@inkohx.dev",
+    "url": "https://inkohx.dev"
+  },
   "scripts": {
     "format": "prettier -w ."
   },
