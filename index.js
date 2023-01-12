@@ -18,7 +18,7 @@ const cli = meow(
   Options:
     --after -a <ms syntax>\tTarget repositories newer than the specified date.
     --before -b <ms syntax>\tTarget repositories older than the specified date.
-    --token -t <string>\tPersonal access token
+    --token -t <string>\tPersonal access token (default: process.env.GITHUB_TOKEN)
     --compare -c <${[...compareTypes].join(
       '|'
     )}>\tType of date to compare (default: updatedAt) (Multiple)
