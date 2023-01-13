@@ -106,7 +106,7 @@ const inRange = (date) => {
 }
 
 console.log('Repository Types', [...type].join(', '))
-console.log('Compare to', [...compare].join(', '))
+console.log('Compare ', [...compare].join(', '))
 
 for await (const response of repositories) {
   for (const repository of response.data) {
