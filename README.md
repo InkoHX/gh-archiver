@@ -14,6 +14,19 @@ npx gh-archiver --help
 
 ## Usage
 
+### Create a Personal Access Token
+
+You need to create a Personal Access Token with permissions set as per the following table from [the settings](https://github.com/settings/personal-access-tokens/new).
+
+Select `All repositories` for `Repository access`
+
+| Permission Name | Access           |
+| --------------- | ---------------- |
+| Administration  | `Read and write` |
+| Metadata        | `Read-only`      |
+
+### Command-line
+
 ```sh
 # Archive repositories that are 1 year old from the last update date.
 gh-archiver --before 1y --token="PERSONAL_ACCESS_TOKEN"
