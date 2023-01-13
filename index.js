@@ -47,6 +47,7 @@ const cli = meow(
       },
       type: {
         type: 'string',
+        alias: 't',
         default: ['public'],
         isMultiple: true,
       },
