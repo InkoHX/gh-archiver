@@ -166,5 +166,10 @@ if (archivable) {
 
   for (const response of responses) {
     if (response.status === 'rejected') console.error(response.reason)
+    else {
+      const repository = response.value.data
+
+      console.log(`Archived ${repository.full_name}`)
+    }
   }
 } else console.log('Cancel archiving')
