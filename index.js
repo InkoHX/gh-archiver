@@ -25,6 +25,7 @@ const cli = meow(
     --type <${[...repositoryTypes].join(
       '|'
     )}>\tThe type of repository. (default: public) (Multiple)
+    --exclude <owner/name>\tExclude repositories
 
     <ms syntax> documentation: https://github.com/vercel/ms#readme
 `,
@@ -57,11 +58,16 @@ const cli = meow(
         default: ['updatedAt'],
         isMultiple: true,
       },
+      exclude: {
+        type: 'string',
+        isMultiple: true,
+      },
     },
   }
 )
 
 const token = cli.flags.token || process.env.GITHUB_TOKEN
+const excludeRepositories = new Set(cli.flags.exclude)
 const type = new Set(cli.flags.type)
 const compare = new Set(cli.flags.compare)
 const before = cli.flags.before
@@ -76,6 +82,9 @@ try {
     repositoryTypes.has(it)
   )
   const correctCompareTypes = [...compare].every((it) => compareTypes.has(it))
+  const correctExcludeRepositoryNames = [...excludeRepositories].every((it) =>
+    /^[a-zA-Z0-9-]+\/[a-zA-Z0-9-._]+$/.test(it)
+  )
 
   if (!before && !after)
     throw 'Must use either the "--before" or "--after" flag.'
@@ -88,6 +97,8 @@ try {
       .map((it) => `"${it}"`)
       .join(', ')}.`
   if (!token) throw 'Please pass a personal access token using "--token".'
+  if (!correctExcludeRepositoryNames)
+    throw 'The syntax of the exclude repository is incorrect. (Ex: InkoHX/gh-archiver)'
 } catch (error) {
   console.error(error)
   process.exit(1)
@@ -111,6 +122,7 @@ console.log('Compare ', [...compare].join(', '))
 
 for await (const response of repositories) {
   for (const repository of response.data) {
+    if (excludeRepositories.has(repository.full_name)) continue
     if (repository.disabled || repository.archived) continue
     if (type.has('public') && repository.private) continue
     if (type.has('private') && !repository.private) continue
