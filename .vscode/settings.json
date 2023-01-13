@@ -1,3 +1,5 @@
 {
-  "cSpell.words": ["archivable"]
+  "cSpell.words": ["archivable"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.packageManager": "pnpm"
 }
