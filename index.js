@@ -111,9 +111,9 @@ console.log('Compare to', [...compare].join(', '))
 for await (const response of repositories) {
   for (const repository of response.data) {
     if (repository.disabled || repository.archived) continue
-    if (!type.has('public') && !repository.private) continue
-    if (!type.has('private') && repository.private) continue
-    if (!type.has('fork') && repository.fork) continue
+    if (type.has('public') && repository.private) continue
+    if (type.has('private') && !repository.private) continue
+    if (type.has('fork') && !repository.fork) continue
     if (
       compare.has('createdAt') &&
       repository.created_at &&
