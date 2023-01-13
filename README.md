@@ -6,7 +6,7 @@ A tool for archiving GitHub repositories
 
 ```sh
 # Global install
-npm -g gh-archiver
+npm i -g gh-archiver
 
 # npx
 npx gh-archiver --help
