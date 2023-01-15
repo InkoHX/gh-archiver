@@ -26,7 +26,9 @@
   },
   "scripts": {
     "format": "prettier -w .",
-    "lint": "eslint ./index.js --fix"
+    "format:check": "prettier -c .",
+    "lint": "eslint ./index.js --fix",
+    "lint:check": "eslint ./index.js"
   },
   "dependencies": {
     "meow": "^11.0.0",
