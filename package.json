@@ -33,7 +33,7 @@
   "dependencies": {
     "meow": "^11.0.0",
     "ms": "^2.1.3",
-    "octokit": "^2.0.11"
+    "octokit": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^8.31.0",
